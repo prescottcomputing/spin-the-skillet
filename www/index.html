@@ -1,0 +1,49 @@
+<html>
+<head>
+<meta name="viewport" content="width=device-width; user-scalable=no" />
+<style>
+body{
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden !important;
+    overflow-y: scroll !important; //or auto
+}
+#title {
+	margin-left:20px;
+}
+#skillet {
+    position:absolute;
+	top:150px;
+	left:20px;
+}
+</style>
+<script type="text/javascript">
+            window.addEventListener('load', function() {
+                document.body.addEventListener('touchmove', function(e) {
+                    e.preventDefault();
+                }, false);
+            }, false);
+</script>
+</head>
+<body>
+<img id="title" src="spin-the-skillet.png" /><br>
+<img id="skillet" src="skillet-1.png" /><br>
+<script>
+ var degrees=0, seconds=0, previousRotation=0;
+ var img = document.getElementById('skillet');
+ img.addEventListener('click', onClick, false);
+
+ function onClick() {
+    this.removeAttribute('style');
+    previousRotation = degrees;
+    degrees+= parseInt(Math.random() * 360 + 720);
+    miliseconds = parseInt((degrees - previousRotation)) * 4;    
+    var css = '-webkit-transform: rotate(' + degrees + 'deg);';
+    css += '-webkit-transition-duration: ' + miliseconds + 'ms;';
+    //css += 'position:absolute;top:100px;left:20px;';
+    this.setAttribute('style', css);
+ }
+</script>
+</html>
